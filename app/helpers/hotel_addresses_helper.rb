@@ -1,0 +1,2 @@
+module HotelAddressesHelper
+end

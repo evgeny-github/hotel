@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @comment.user_id %>
+</p>
+
+<p>
+  <b>Hotel:</b>
+  <%= @comment.hotel_id %>
+</p>
+
+<p>
+  <b>Star rating:</b>
+  <%= @comment.star_rating %>
+</p>
+
+<p>
+  <b>User comment:</b>
+  <%= @comment.user_comment %>
+</p>
+
+
+<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Back', comments_path %>
