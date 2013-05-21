@@ -1,13 +1,18 @@
 HotelAdvisor::Application.routes.draw do
-  devise_for :users
-
-  resources :comments
 
   resources :hotel_addresses
 
+  resources :comments
+
   resources :hotels
 
-  resources :users
+  devise_for :users
+  #~ resources :users
+
+  get "home/index"
+  root :to => 'home#index' 
+
+  match "/sign_out" => "home#signout"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
