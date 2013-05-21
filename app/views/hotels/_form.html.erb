@@ -9,6 +9,21 @@
     <%= f.input :price %>
   </div>
 
+  <div class="form-inputs">
+    <%= f.label :country %><br />
+    <%= select_tag :country, collection: [ 1 => "Nepal", 2 => "Uganda", 3 => "Angola", 4 => "Tonga", 5 => "Samoa"] %>
+    <%#= f.input :country, priority: [ "Uganda" ], collection: [ "Nepal", "Uganda", "Angola", "Tonga", "Samoa"] %>
+<br />
+
+
+    <%= f.label :state %><br />
+    <%= text_field_tag :state %><br />
+    <%= f.label :city %><br />
+    <%= text_field_tag :city %><br />
+    <%= f.label :street %><br />
+    <%= text_field_tag :street %><br />
+  </div>
+
   <div class="form-actions">
     <%= f.button :submit %>
   </div>

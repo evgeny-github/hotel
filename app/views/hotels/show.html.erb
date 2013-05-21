@@ -25,6 +25,48 @@
   <%= @hotel.price %>
 </p>
 
+<p>
+  <b>Country:</b>
+  <%#= @hotel.country %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%#= @hotel.state %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @hotel.try(:hotel_address).try(:city) %>
+</p>
+
+<p>
+  <b>Street:</b>
+  <%= @hotel.try(:hotel_address).try(:street) %>
+</p>
+
+
 
 <%= link_to 'Edit', edit_hotel_path(@hotel) %> |
 <%= link_to 'Back', hotels_path %>
+
+<%# if user_signed_in? %> 
+<hl>
+<%= form_tag controller: :comments, action: :create, method: :post %>
+<%#= hidden_field_tag 'comment[user_id]', current_user.id %>
+<%= hidden_field_tag 'comment[hotel_id]', @hotel.id %>
+<%= number_field_tag 'comment[star_rating]', nil, :in => 0..5 %>
+<br>
+<%= text_area_tag 'comment[user_comment]' %>
+<br>
+<%= button_tag "Leave comment" %>
+<%# end %> 
+
+<hl>
+<% @hotel.comments.each do |comment| %> 
+<p>
+Rate: <%= comment.star_rating %>
+<br>
+Comment: <%= comment.user_comment %>
+</p>
+<% end %> 

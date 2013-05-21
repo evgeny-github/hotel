@@ -3,8 +3,6 @@
 <table>
   <tr>
     <th>Title</th>
-    <th>Rating avg</th>
-    <th># comments</th>
     <th>Rating</th>
     <th>Breakfast included</th>
     <th>Description</th>
@@ -13,6 +11,7 @@
     <th>State</th>
     <th>City</th>
     <th>Street</th>
+    <th># comments</th>
     <th></th>
     <th></th>
     <th></th>
@@ -21,8 +20,6 @@
 <% @hotels.each do |hotel| %>
   <tr>
     <td><%= hotel.title %></td>
-    <td><%= hotel.rating_average %></td>
-    <td><%= hotel.comments.count %></td>
     <td><%= hotel.rating %></td>
     <td><%= hotel.breakfast_included %></td>
     <td><%= hotel.description %></td>
@@ -31,6 +28,7 @@
     <td><%= hotel.try(:hotel_address).try(:state) %></td>
     <td><%= hotel.try(:hotel_address).try(:city) %></td>
     <td><%= hotel.try(:hotel_address).try(:street) %></td>
+    <td><%= hotel.comments.count %></td>
     <td><%= link_to 'Show', hotel %></td>
     <td><%= link_to 'Edit', edit_hotel_path(hotel) %></td>
     <td><%= link_to 'Destroy', hotel, confirm: 'Are you sure?', method: :delete %></td>
