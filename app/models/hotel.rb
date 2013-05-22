@@ -4,6 +4,8 @@ class Hotel < ActiveRecord::Base
 
   validates_presence_of :title, :rating
 
+  mount_uploader :image, ImageUploader
+
   def rating_average
     self.comments.average('star_rating')
   end
