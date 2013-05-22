@@ -1,0 +1,18 @@
+<p>
+<b>Hotel top selection</b>
+</p>
+
+<% @hotels_top.each do |hotel_item| %>
+<% hotel = Hotel.find(hotel_item.hotel_id) %>
+<p>
+<%= image_tag hotel.try(:image_url).to_s %>
+</p>
+<p>
+<i>item #<%= hotel_item.hotel_id %></i>
+<br/>
+<i><%= hotel.title %></i>
+<i>$<%= hotel.price or 0 %></i>
+<br/>
+<i><%= hotel.description %></i>
+</p>
+<% end %>

@@ -3,6 +3,7 @@ class HotelsController < ApplicationController
   # GET /hotels.json
   def index
     @hotels = Hotel.all
+    @hotels_top = Comment.user_choice
 
     respond_to do |format|
       format.html # index.html.erb
