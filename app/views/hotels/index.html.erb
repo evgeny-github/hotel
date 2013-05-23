@@ -1,3 +1,7 @@
+<% if user_signed_in? %>
+<%= link_to 'New Hotel', new_hotel_path %>
+<% end %>
+
 <%= render partial: 'top_hotels' %>
 
 <h1>Listing hotels</h1>
@@ -29,7 +33,7 @@
     <td><%= hotel.breakfast_included %></td>
     <td><%= hotel.description %></td>
     <td><%= hotel.price %></td>
-    <td><%= hotel.try(:hotel_address).try(:country) %></td>
+    <td><%= hotel.try(:hotel_address).try(:country).try(:name) %></td>
     <td><%= hotel.try(:hotel_address).try(:state) %></td>
     <td><%= hotel.try(:hotel_address).try(:city) %></td>
     <td><%= hotel.try(:hotel_address).try(:street) %></td>
@@ -41,5 +45,3 @@
 </table>
 
 <br />
-
-<%= link_to 'New Hotel', new_hotel_path %>

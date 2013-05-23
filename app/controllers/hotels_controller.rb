@@ -45,8 +45,11 @@ class HotelsController < ApplicationController
 
     respond_to do |format|
       if @hotel.save
+        @hotel_address = HotelAddress.new(params[:address])
+        @hotel_address.hotel_id = @hotel.id
+        @hotel_address.save
         redirect_to action: :index and return
-	format.html { redirect_to @hotel, notice: 'Hotel was successfully created.' }
+        format.html { redirect_to @hotel, notice: 'Hotel was successfully created.' }
         format.json { render json: @hotel, status: :created, location: @hotel }
       else
         format.html { render action: "new" }
@@ -58,6 +61,13 @@ class HotelsController < ApplicationController
   # PUT /hotels/1
   # PUT /hotels/1.json
   def update
+    
+    @hotel_address = HotelAddress.where('hotel_id = ?', params[:id]).first
+    # @hotel_address.save
+    unless @hotel_address.update_attributes(params[:address])
+      render action: "edit"
+    end
+    
     @hotel = Hotel.find(params[:id])
 
     respond_to do |format|
