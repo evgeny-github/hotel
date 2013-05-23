@@ -4,6 +4,12 @@ class Hotel < ActiveRecord::Base
   #~ accepts_nested_attributes_for :hotel_address
 
   validates_presence_of :title, :rating
+  validates_inclusion_of :rating,
+    in: [1, 2, 3, 4, 5],
+    message: "Rating should be 1-5"
+  validates_format_of :title,
+    with: /^[-a-z0-9_'.,:" ()]+$/i,
+    message: "Title acceptes letters, digits, space and special signs -_'.,:\" ()"
 
   mount_uploader :image, ImageUploader
 
