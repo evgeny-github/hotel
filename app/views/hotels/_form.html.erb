@@ -8,7 +8,7 @@
     <%= f.label :remote_image_url, "Web link" %>
     <%= f.text_field :remote_image_url %>
     <br />
-    <%= f.input :rating %>
+    <%= f.input :rating, collection: 1..5 %>
     <%= f.label :include_meals %>
     <%= f.check_box :breakfast_included %>
     <br />

@@ -62,7 +62,7 @@
 <hl>
 <%= form_tag controller: :comments, action: :create, method: :post %>
 <%= hidden_field_tag 'comment[hotel_id]', @hotel.id %>
-<%= number_field_tag 'comment[star_rating]', nil, :in => 0..5 %>
+<%= select_tag 'comment[star_rating]', "<option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>".html_safe %>
 <br>
 <%= text_area_tag 'comment[user_comment]' %>
 <br>
