@@ -1,3 +1,11 @@
+<b>nested form begin</b><br>
+  <% form_for(@hotel, :html => {multipart: true}) do |frm| %>
+    <% frm.fields_for :hotel_address do |a| %>
+    <%= a.text_field :state %>
+    <% end %>
+  <% end %>
+<b>nested form end</b><br>
+
 <%= simple_form_for(@hotel, :html => {multipart: true}) do |f| %>
   <%= f.error_notification %>
 
@@ -20,7 +28,6 @@
     <%= f.label :country %><br />
     <%= select_tag "address[country_id]", options_from_collection_for_select(Country.all, "id", "name") %>
 <br />
-
 
     <%= f.label :state %><br />
     <%= text_field_tag 'address[state]', @hotel.try(:hotel_address).try(:state) %><br />
